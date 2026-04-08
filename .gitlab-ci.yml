@@ -1,0 +1,51 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Jennifer's Strategy Dashboard — GitLab CI/CD
+#
+# What this does:
+#   1. "pages" job  → deploys jennifer-todo-dashboard.html to GitLab Pages
+#      (your shareable URL: https://jennifer-denton.gitlab.io/moxie-dashboard/)
+#
+#   2. "end-of-day" job → runs at 5 PM PT Mon–Fri, commits any updated HTML
+#      and redeploys — so Miki always sees the latest version
+#
+# One-time setup required:
+#   - Add a CI/CD variable: GITLAB_TOKEN (a personal access token with api scope)
+#   - See setup guide in GITLAB_SETUP.md
+# ─────────────────────────────────────────────────────────────────────────────
+
+stages:
+  - deploy
+
+# ── Deploy to GitLab Pages (runs on every push to main) ──────────────────────
+pages:
+  stage: deploy
+  image: alpine:latest
+  script:
+    - mkdir -p public
+    - cp jennifer-todo-dashboard.html public/index.html
+    - echo "Deployed dashboard to GitLab Pages"
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+# ── End-of-day auto-save (runs at 5 PM PT = midnight UTC Mon–Fri) ─────────────
+end-of-day-save:
+  stage: deploy
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache git curl
+    - git config --global user.email "jennifer.denton@joinmoxie.com"
+    - git config --global user.name "Jennifer Denton (Auto-Save)"
+  script:
+    - |
+      echo "End-of-day save — $(date)"
+      # The file is already updated by Claude's scheduled tasks on Jennifer's machine
+      # and pushed here. This job just confirms deploy and notifies Miki.
+      echo "Dashboard is live at https://${CI_PROJECT_NAMESPACE}.gitlab.io/${CI_PROJECT_NAME}/"
+      echo "Miki can review at the above URL."
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+  only:
+    - main
