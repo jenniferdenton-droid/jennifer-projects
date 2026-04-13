@@ -1080,7 +1080,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 // ══════════════════════════════════════════════
 // DATA — auto-updated by daily-action-item-digest
 // ══════════════════════════════════════════════
-const REFRESH_DATE = "Apr 8, 2026";
+const REFRESH_DATE = "Apr 13, 2026";
 
 const PROJECTS_SEED = [
   { id:"p_payroll",  name:"Payroll Check — State of Union",      emoji:"💼", priority:"High",   status:"In Progress", rank:1, color:"#3b82f6",
@@ -1207,7 +1207,11 @@ const ITEMS = [
   { id:"meet_20260403_leads_quickwins_session", text:"Schedule ~1 hour session with team leads to share quick wins methodology — Miki proposed Jennifer share her Claude/automation process with leads (Shannon, Ashley, Leslie) to level up the whole team", from:"Miki Lager (meet)", channel:"added 1:1 · Apr 3", date:"2026-04-03", permalink:"https://docs.google.com/document/d/1da4e3RBxl4YpL_0p5YSWolOVD5DLsZCJRCRFhK6o_9s/edit", source:"meet", project:"p_oneoff" },
   // ── Slack — Apr 8, 2026 ──
   { id:"slack_escripts_launch_tab_review_apr8", text:"\u23f3 Waiting on Maddy — asked her to review the e-scripts launch tab spreadsheet and flag updated statuses + anything I might have missed. Follow up if no response today.", from:"Maddy Campbell", channel:"DM \u00b7 Maddy Campbell", date:"2026-04-08", permalink:"https://moxie-9tm4096.slack.com/archives/D0ARGH6E96H/p1775653694031759", source:"slack", project:"p_escripts" },
-  { id:"slack_payroll_mtg_consolidation_apr8", text:"Proposed combining 3 overlapping payroll meetings today (Payroll Sync 11:05, Bi-Weekly Internal Payroll Sync 12:30, Check\u2194Moxie 1:00) — waiting on Leslie and Amira's response to confirm which meetings can be merged.", from:"Jennifer", channel:"Group DM \u00b7 Leslie / Amira", date:"2026-04-08", permalink:"https://moxie-9tm4096.slack.com/archives/C0ANXLG18VA/p1775649370221489", source:"slack", project:"p_payroll" }
+  { id:"slack_payroll_mtg_consolidation_apr8", text:"Proposed combining 3 overlapping payroll meetings today (Payroll Sync 11:05, Bi-Weekly Internal Payroll Sync 12:30, Check\u2194Moxie 1:00) — waiting on Leslie and Amira's response to confirm which meetings can be merged.", from:"Jennifer", channel:"Group DM \u00b7 Leslie / Amira", date:"2026-04-08", permalink:"https://moxie-9tm4096.slack.com/archives/C0ANXLG18VA/p1775649370221489", source:"slack", project:"p_payroll" },
+  // ── Slack — Apr 10, 2026 ──
+  { id:"slack_payroll_dupe_ticket_apr10", text:"🐛 Bug flagged by Joaquin: Two providers share the same ticket number in the payroll dashboard (True Essence + Northern Rose Medspa) — causes wrong ticket to pop up when interacting. Joaquin waiting on confirmation before touching the Google Sheet data. Fix duplicate ticket number.", from:"Joaquin Lava", channel:"Group DM \u00b7 Leslie / Amira / Joaquin", date:"2026-04-10", permalink:"https://moxie-9tm4096.slack.com/archives/C0ASRRMRP7A/p1775859783189479", source:"slack", project:"p_payroll" },
+  { id:"slack_bookkeeping_kickoff_apr10", text:"Committed to Leslie + Miki by EOD Apr 10: (1) Set up bookkeeping intro meetings with Layer team (Dan, Ben, Jenny — Layer CEO wants all three of us at once first), (2) Send project plan template + how to use it, (3) Pull CHECK data into the dashboard. Schedule kickoff meeting next week.", from:"Jennifer", channel:"DM \u00b7 Leslie Nichols", date:"2026-04-10", permalink:"https://moxie-9tm4096.slack.com/archives/D0AGZNEM8LR/p1775848106422679", source:"slack", project:"p_payroll" },
+  { id:"slack_payroll_sla_automation_apr10", text:"Building SLA flag logic for payroll tracker — flag items that go past defined SLA at each step and automate alerts. Waiting on Amira + Joaquin to define: days between status changes, days between notes, and wait time before flagging items stuck at Check/Moxie/provider.", from:"Jennifer", channel:"Group DM \u00b7 Leslie / Amira / Joaquin", date:"2026-04-10", permalink:"https://moxie-9tm4096.slack.com/archives/C0ASRRMRP7A/p1775833224285169", source:"slack", project:"p_payroll" }
 ];
 
 const SUGGESTIONS = [
@@ -1309,21 +1313,36 @@ const MEETINGS = [
   {id:"gcal_1qaii9atcvg5oobvuo",title:"Automation Potential — Supplies Onboarding",date:"2026-04-09",startTime:"10:35",endTime:"11:30",meetUrl:"",attendees:["Tara","Shannon"],description:""},
   {id:"gcal_escripts_alignment_0409",title:"E-Scripts Alignment",date:"2026-04-09",startTime:"14:30",endTime:"15:15",meetUrl:"",attendees:["Maddy","Leslie","Miki","Kendra","Shannon"],description:"Weekly e-scripts launch sync"},
   {id:"gcal_payroll_overview_0410",title:"Payroll Overview",date:"2026-04-10",startTime:"14:05",endTime:"14:30",meetUrl:"",attendees:["Leslie","Miki"],description:"Payroll blockers — teams needed, Check-side issues, open TBDs"},
-  {id:"gcal_p9bojtvur380v8l6rs",title:"All Team Monthly",date:"2026-04-13",startTime:"12:00",endTime:"13:00",meetUrl:"",attendees:[],description:""},
+  {id:"gcal_escripts_addison_0413",title:"e-Escripts",date:"2026-04-13",startTime:"07:35",endTime:"08:30",meetUrl:"",attendees:["Addison Huneycutt"],description:"e-Scripts sync with Addison"},
+  {id:"gcal_p9bojtvur380v8l6rs",title:"All Team Monthly",date:"2026-04-13",startTime:"09:00",endTime:"10:00",meetUrl:"",attendees:[],description:""},
+  {id:"gcal_jennifer_sarah_delivermore_0413",title:"Jennifer / Sarah — Deliver More Sync",date:"2026-04-13",startTime:"11:00",endTime:"11:30",meetUrl:"",attendees:["Sarah"],description:"Deliver More weekly sync"},
+  {id:"gcal_escripts_alignment_0413",title:"E-Scripts Alignment",date:"2026-04-13",startTime:"12:05",endTime:"13:00",meetUrl:"",attendees:["Maddy","Leslie","Miki"],description:"Weekly e-scripts launch sync"},
   {id:"gcal_8p344e216l0jab9g6pe",title:"Leslie / Jennifer",date:"2026-04-14",startTime:"12:05",endTime:"12:30",meetUrl:"",attendees:["Leslie"],description:""},
-  {id:"gcal_gtukqm9l8e4fqcocd9b",title:"Jennifer/Miki 1:1",date:"2026-04-15",startTime:"09:30",endTime:"10:00",meetUrl:"",attendees:["Miki"],description:""},
-  {id:"gcal_8h146e9n60sk2b9p6sb",title:"Payroll Sync",date:"2026-04-15",startTime:"11:05",endTime:"11:30",meetUrl:"",attendees:["Leslie","Amira"],description:""},
-  {id:"gcal_ff7bn0lodvubjthpf3b",title:"Addison / Jennifer",date:"2026-04-15",startTime:"11:05",endTime:"11:30",meetUrl:"",attendees:["Addison Huneycutt"],description:""},
-  {id:"gcal_302emsqqlobng2np0f",title:"Quarterly WINS",date:"2026-04-15",startTime:"12:00",endTime:"13:00",meetUrl:"",attendees:["Leslie","Miki","Carla Nichols","Shannon"],description:"Celebrating wins from the previous quarter"},
-  {id:"gcal_0jhj75ej14unffhgplb",title:"Shannon — Jenn 1:1",date:"2026-04-15",startTime:"12:35",endTime:"13:00",meetUrl:"",attendees:["Shannon"],description:""},
+  {id:"gcal_gtukqm9l8e4fqcocd9b",title:"Jennifer/Miki 1:1",date:"2026-04-15",startTime:"06:30",endTime:"07:00",meetUrl:"",attendees:["Miki"],description:""},
+  {id:"gcal_302emsqqlobng2np0f",title:"Quarterly WINS",date:"2026-04-15",startTime:"08:00",endTime:"09:00",meetUrl:"",attendees:["Leslie","Miki","Carla Nichols","Shannon"],description:"Celebrating wins from the previous quarter"},
+  {id:"gcal_ff7bn0lodvubjthpf3b",title:"Addison / Jennifer",date:"2026-04-15",startTime:"09:05",endTime:"09:35",meetUrl:"",attendees:["Addison Huneycutt"],description:""},
+  {id:"gcal_0jhj75ej14unffhgplb",title:"Shannon — Jenn 1:1",date:"2026-04-15",startTime:"09:35",endTime:"10:00",meetUrl:"",attendees:["Shannon"],description:""},
+  {id:"gcal_layer_weekly_0415",title:"Moxie // Layer — Weekly Sync",date:"2026-04-15",startTime:"10:30",endTime:"11:00",meetUrl:"",attendees:["Justin","Daniel","Jesse","Amy"],description:"Weekly bookkeeping partnership sync with Layer"},
+  {id:"gcal_8p344e216l0jab_0415",title:"Leslie / Jennifer",date:"2026-04-15",startTime:"11:05",endTime:"11:30",meetUrl:"",attendees:["Leslie"],description:""},
+  {id:"gcal_8h146e9n60sk2b9p6sb",title:"Payroll Sync",date:"2026-04-15",startTime:"11:30",endTime:"12:00",meetUrl:"",attendees:["Leslie","Amira"],description:""},
   {id:"gcal_did329np2il60_0415",title:"Bi-weekly Product Roadmap Review",date:"2026-04-15",startTime:"11:30",endTime:"12:15",meetUrl:"",attendees:["Chandler","Product Team"],description:""},
-  {id:"gcal_gtukqm9l8e4fq_0421",title:"Jennifer/Miki 1:1",date:"2026-04-21",startTime:"09:30",endTime:"10:00",meetUrl:"",attendees:["Miki"],description:""},
-  {id:"gcal_8h146e9n60sk2_0421",title:"Payroll Sync",date:"2026-04-21",startTime:"11:05",endTime:"11:30",meetUrl:"",attendees:["Leslie","Amira"],description:""},
-  {id:"gcal_ff7bn0lodvubj_0421",title:"Addison / Jennifer",date:"2026-04-21",startTime:"11:05",endTime:"11:30",meetUrl:"",attendees:["Addison Huneycutt"],description:""},
-  {id:"gcal_1qtg5s0ubf2ef_0421",title:"Bi-Weekly Ops Alignment",date:"2026-04-21",startTime:"11:30",endTime:"12:00",meetUrl:"",attendees:["Leslie","Miki","Addison Huneycutt","William Liao"],description:""},
-  {id:"gcal_0jhj75ej14unf_0421",title:"Shannon — Jenn 1:1",date:"2026-04-21",startTime:"12:35",endTime:"13:00",meetUrl:"",attendees:["Shannon"],description:""},
-  {id:"gcal_8p344e216l0jab_0421",title:"Leslie / Jennifer",date:"2026-04-21",startTime:"12:05",endTime:"12:30",meetUrl:"",attendees:["Leslie"],description:""},
-  {id:"gcal_00lah78qtqvjp9_0422",title:"Bi-weekly Internal Payroll Sync",date:"2026-04-22",startTime:"12:30",endTime:"13:00",meetUrl:"",attendees:["Michal Bieszczad","Leslie","Joaquin Lava","Ditto Palang","Miki","Amira"],description:""},
+  {id:"gcal_supplies_onboarding_0416",title:"Automation Supplies Onboarding",date:"2026-04-16",startTime:"08:00",endTime:"09:00",meetUrl:"",attendees:["Tara","Shannon"],description:""},
+  {id:"gcal_escripts_alignment_0416",title:"E-Script Alignment",date:"2026-04-16",startTime:"12:35",endTime:"13:00",meetUrl:"",attendees:["Maddy","Leslie","Miki"],description:"Weekly e-scripts launch sync"},
+  {id:"gcal_clickup_prio_0420",title:"ClickUp Prioritization",date:"2026-04-20",startTime:"08:05",endTime:"09:00",meetUrl:"",attendees:["Leslie","Ashley","Miki"],description:"ClickUp migration priority planning"},
+  {id:"gcal_escripts_alignment_0420",title:"E-Scripts Alignment",date:"2026-04-20",startTime:"12:05",endTime:"13:00",meetUrl:"",attendees:["Maddy","Leslie","Miki"],description:"Weekly e-scripts launch sync"},
+  {id:"gcal_gtukqm9l8e4fq_0421",title:"Jennifer/Miki 1:1",date:"2026-04-21",startTime:"06:30",endTime:"07:00",meetUrl:"",attendees:["Miki"],description:""},
+  {id:"gcal_om_capacity_0421",title:"OM Capacity Model",date:"2026-04-21",startTime:"08:00",endTime:"08:30",meetUrl:"",attendees:["Leslie"],description:""},
+  {id:"gcal_1qtg5s0ubf2ef_0421",title:"Bi-Weekly Ops Alignment",date:"2026-04-21",startTime:"08:30",endTime:"09:00",meetUrl:"",attendees:["Leslie","Miki","Addison Huneycutt","William Liao"],description:""},
+  {id:"gcal_launch_more_monthly_0421",title:"Launch More: Monthly Initiative Meeting",date:"2026-04-21",startTime:"10:00",endTime:"11:00",meetUrl:"",attendees:["Leslie","Andres Palacio","Miki","Jesse Lau"],description:"Pre-WBR monthly initiative review"},
+  {id:"gcal_supplies_concerns_0421",title:"Supplies Questions/Concerns",date:"2026-04-21",startTime:"12:00",endTime:"13:00",meetUrl:"",attendees:["Leslie","Ellery","Shannon"],description:""},
+  {id:"gcal_ff7bn0lodvubj_0421",title:"Addison / Jennifer",date:"2026-04-21",startTime:"09:05",endTime:"09:35",meetUrl:"",attendees:["Addison Huneycutt"],description:""},
+  {id:"gcal_8p344e216l0jab_0421",title:"Leslie / Jennifer",date:"2026-04-21",startTime:"11:05",endTime:"11:30",meetUrl:"",attendees:["Leslie"],description:""},
+  {id:"gcal_8h146e9n60sk2_0421",title:"Payroll Sync",date:"2026-04-21",startTime:"11:30",endTime:"12:00",meetUrl:"",attendees:["Leslie","Amira"],description:""},
+  {id:"gcal_0jhj75ej14unf_0421",title:"Shannon — Jenn 1:1",date:"2026-04-21",startTime:"09:35",endTime:"10:00",meetUrl:"",attendees:["Shannon"],description:""},
+  {id:"gcal_escripts_training_0422",title:"E-Scripts Training (optional)",date:"2026-04-22",startTime:"09:00",endTime:"10:00",meetUrl:"",attendees:["Kendra","Julie","Joyce","Miki"],description:""},
+  {id:"gcal_deliver_more_0422",title:"Deliver More",date:"2026-04-22",startTime:"09:00",endTime:"10:00",meetUrl:"",attendees:["Addison Huneycutt","Ben","Sarah","Stephanie"],description:""},
+  {id:"gcal_addison_jennifer_0422",title:"Addison / Jennifer",date:"2026-04-22",startTime:"09:05",endTime:"09:35",meetUrl:"",attendees:["Addison Huneycutt"],description:""},
+  {id:"gcal_00lah78qtqvjp9_0422",title:"Bi-weekly Internal Payroll Sync",date:"2026-04-22",startTime:"09:30",endTime:"10:00",meetUrl:"",attendees:["Michal Bieszczad","Leslie","Joaquin Lava","Ditto Palang","Miki","Amira"],description:""},
   {id:"gcal_4g1g1kbnjj96cc_0422",title:"Check \u2194 Moxie | Biweekly Meeting",date:"2026-04-22",startTime:"13:00",endTime:"13:30",meetUrl:"",attendees:["Michal Bieszczad","Rebeca","Leslie","Ditto Palang","Miki","Amira","Joaquin Lava"],description:""},
   {id:"gcal_3qv4d304g1qd33_0422",title:"Deliver More",date:"2026-04-22",startTime:"12:00",endTime:"13:00",meetUrl:"",attendees:["Miki","Sarah","Team"],description:""},
   {id:"gcal_gtukqm9l8e4fq_0428",title:"Jennifer/Miki 1:1",date:"2026-04-28",startTime:"09:30",endTime:"10:00",meetUrl:"",attendees:["Miki"],description:""},
