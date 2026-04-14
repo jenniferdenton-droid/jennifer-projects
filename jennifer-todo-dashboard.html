@@ -659,7 +659,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   .proj-kpi-row,.cap-kpi{grid-template-columns:repeat(2,1fr)}
   .cap-charts{grid-template-columns:1fr}
   .proj-grid{grid-template-columns:1fr}
+  .tp-grid{grid-template-columns:1fr}
 }
+/* ── TEAM PULSE ── */
+.tp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:16px;margin-top:4px}
+.tp-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.tp-card-hdr{display:flex;align-items:center;gap:10px;padding:14px 16px 10px;border-bottom:1px solid #f3f4f6}
+.tp-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.tp-person-info{flex:1;min-width:0}
+.tp-name{font-size:13px;font-weight:700;line-height:1.2}
+.tp-role{font-size:11px;color:#6b7280;margin-top:1px}
+.tp-lastseen{font-size:10px;color:#9ca3af;white-space:nowrap}
+.tp-items{padding:10px 14px 14px;display:flex;flex-direction:column;gap:8px}
+.tp-item{padding:8px 10px;background:#fafafa;border:1px solid #f3f4f6;border-radius:7px}
+.tp-item-meta{display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-wrap:wrap}
+.tp-channel{font-size:10px;font-weight:700;color:#6366f1;background:#eef2ff;padding:1px 6px;border-radius:4px}
+.tp-time{font-size:10px;color:#9ca3af}
+.tp-badge{font-size:10px;font-weight:600;padding:1px 6px;border-radius:4px;margin-left:auto}
+.tp-item-text{font-size:12px;color:#374151;line-height:1.5}
 </style>
 </head>
 <body>
@@ -689,6 +706,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   <button class="tab-btn" onclick="switchTab('meetings')" id="tnav-meetings">📅 Meetings <span class="tbadge" id="tb-meetings">0</span></button>
   <button class="tab-btn" onclick="switchTab('completed')" id="tnav-completed">✓ Completed <span class="tbadge" id="tb-completed">0</span></button>
   <button class="tab-btn" onclick="switchTab('friday')" id="tnav-friday">🎯 Friday Wrap</button>
+  <button class="tab-btn" onclick="switchTab('team')" id="tnav-team">👥 Team Pulse</button>
 </nav>
 
 <!-- ═══ TAB 1: TODOS ═══ -->
@@ -817,6 +835,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <button onclick="renderFridayWrap()" style="padding:6px 14px;font-size:12px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:8px;cursor:pointer;font-family:inherit;color:#374151">↺ Refresh</button>
   </div>
   <div id="friday-wrap-body" style="padding:0 22px 24px"></div>
+</div>
+
+<!-- ═══ TAB 9: TEAM PULSE ═══ -->
+<div id="tab-team" class="tab-content">
+  <div style="padding:18px 22px 12px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <div>
+      <div style="font-size:15px;font-weight:700;color:#374151">👥 Team Pulse</div>
+      <div style="font-size:12px;color:#6b7280;margin-top:2px">Recent activity from your core team — refreshed daily with your morning pull.</div>
+    </div>
+    <button onclick="renderTeamPulse()" style="padding:6px 14px;font-size:12px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:8px;cursor:pointer;font-family:inherit;color:#374151">↺ Refresh</button>
+  </div>
+  <div id="team-pulse-body" style="padding:0 22px 32px"></div>
 </div>
 
 <!-- DECISION MODAL -->
@@ -1468,6 +1498,86 @@ function setLoe(id,val){
   if(activeTab==='capacity')renderCapacity();
 }
 const WAITING_TEAMS=['Rev Ops','Data','Product','Ops','PSM','Sales','Marketing'];
+
+// ── TEAM PULSE DATA ──────────────────────────────────────────────
+const TEAM_PULSE = [
+  {
+    id:'tp_leslie',
+    name:'Leslie Nichols',
+    role:'Revenue Operations',
+    emoji:'👩‍💼',
+    color:'#7c3aed',
+    bg:'#f5f3ff',
+    border:'#ddd6fe',
+    lastSeen:'Apr 14, 2026',
+    items:[
+      {channel:'#revenue-ops', time:'Apr 14', text:'Gift cards for team — asking Miki to approve 3 new migration members at $25 value each. Coordinating onboarding logistics.', type:'action', link:''},
+      {channel:'#revenue-ops', time:'Apr 14', text:'Services survey combining bookkeeping + payroll demand signals — working to quantify pipeline interest across both product lines.', type:'signal', link:''},
+      {channel:'#medspa-education', time:'Apr 13', text:'Shared Layer bookkeeping video resource for team learning. Building product knowledge ahead of payroll launch.', type:'resource', link:''},
+      {channel:'#sales', time:'Apr 13', text:'Flagged Portrait feature limitations to sales team — helping reps set accurate expectations with prospects.', type:'flag', link:''},
+    ]
+  },
+  {
+    id:'tp_miki',
+    name:'Miki Lager',
+    role:'Chief of Staff / Operations',
+    emoji:'⚡',
+    color:'#0369a1',
+    bg:'#f0f9ff',
+    border:'#bae6fd',
+    lastSeen:'Apr 14, 2026',
+    items:[
+      {channel:'#operations', time:'Apr 14', text:'Owns services survey — drafted 5 core questions to size bookkeeping + payroll demand. Sync\'d with Leslie on distribution plan.', type:'action', link:''},
+      {channel:'#data', time:'Apr 14', text:'Flagged launch data discrepancy: "<31 launches" count doesn\'t reconcile. Needs MOR call validation before reporting to leadership.', type:'flag', link:''},
+      {channel:'#jennifer-miki-1on1', time:'Apr 13', text:'1:1 agenda item: Discuss leading system infrastructure topic at May offsite. Wants to put together a short presentation.', type:'signal', link:''},
+      {channel:'#operations', time:'Apr 13', text:'Asking if Stephanie Hudson should lead something in ops — exploring team capacity and leadership development opportunities.', type:'signal', link:''},
+    ]
+  },
+  {
+    id:'tp_shannon',
+    name:'Shannon Aubert',
+    role:'Customer Success / Ops',
+    emoji:'🎯',
+    color:'#047857',
+    bg:'#f0fdf4',
+    border:'#bbf7d0',
+    lastSeen:'Apr 14, 2026',
+    items:[
+      {channel:'#customer-success', time:'Apr 14', text:'Billing issues delegated to Megan Koncek for handling. Clearing queue before week closes.', type:'action', link:''},
+      {channel:'#kol-partnerships', time:'Apr 14', text:'Confirmed Dr. Zayid as KOL — next step is onboarding into the program and setting content expectations.', type:'action', link:''},
+      {channel:'#moxie-data', time:'Apr 13', text:'Report cleanup session with JB + Sol in #moxie-data. Aligning on data definitions before next cycle.', type:'action', link:''},
+      {channel:'#finance', time:'Apr 13', text:'MCA/LTO loan tracking — $10k balance, 10% rate / 10% of revenue. Flagged for financial model update.', type:'flag', link:''},
+    ]
+  },
+  {
+    id:'tp_ashley',
+    name:'Ashley Pope',
+    role:'Data & Analytics',
+    emoji:'📊',
+    color:'#b45309',
+    bg:'#fffbeb',
+    border:'#fde68a',
+    lastSeen:'Apr 14, 2026',
+    items:[
+      {channel:'#moxie-data', time:'Apr 14', text:'Offered MSO/non-MSO data audit coordination with Jennifer this week — follow up to align on scope and timeline.', type:'action', link:''},
+      {channel:'#moxie-data', time:'Apr 13', text:'Omni data input issue clarification: this is an Operations-side problem, not a reporting issue. Helps scope the fix correctly.', type:'signal', link:''},
+    ]
+  },
+  {
+    id:'tp_addison',
+    name:'Addison Huneycutt',
+    role:'Sales / Revenue',
+    emoji:'🚀',
+    color:'#be185d',
+    bg:'#fdf2f8',
+    border:'#fbcfe8',
+    lastSeen:'Apr 14, 2026',
+    items:[
+      {channel:'#hubspot', time:'Apr 14', text:'Fixed medspa ID 2014 in HubSpot — data integrity cleanup for accurate reporting.', type:'action', link:''},
+      {channel:'#data', time:'Apr 14', text:'Working with Miki on launch data second-location discrepancy — trying to reconcile count before it surfaces in exec reporting.', type:'flag', link:''},
+    ]
+  }
+];
 function getWaitingTeam(id){return waitingTeamMap[id]||''}
 function setWaitingTeam(id,val){
   if(val)waitingTeamMap[id]=val;else delete waitingTeamMap[id];
@@ -1524,6 +1634,7 @@ function switchTab(t){
   if(t==='meetings') renderMeetings();
   if(t==='completed') renderCompleted();
   if(t==='friday') renderFridayWrap();
+  if(t==='team') renderTeamPulse();
 }
 
 // ══════════════════════════════════════════════
@@ -3103,6 +3214,55 @@ function copyWrapMiki(){
 }
 
 // ══════════════════════════════════════════════
+// TEAM PULSE
+// ══════════════════════════════════════════════
+function renderTeamPulse(){
+  const body=document.getElementById('team-pulse-body');
+  if(!body)return;
+
+  const typeLabel={action:'✅ Action',signal:'💡 Signal',resource:'📚 Resource',flag:'⚠️ Watch',info:'ℹ️ Info'};
+  const typeBg={action:'#dcfce7',signal:'#eff6ff',resource:'#fefce8',flag:'#fef2f2',info:'#f3f4f6'};
+  const typeColor={action:'#15803d',signal:'#1d4ed8',resource:'#a16207',flag:'#dc2626',info:'#6b7280'};
+
+  const refreshDate = typeof REFRESH_DATE!=='undefined' ? REFRESH_DATE : 'Today';
+
+  let html = `<div class="tp-grid">`;
+
+  TEAM_PULSE.forEach(person=>{
+    const itemsHtml = person.items.map(item=>{
+      const lbl = typeLabel[item.type]||item.type;
+      const bg = typeBg[item.type]||'#f3f4f6';
+      const col = typeColor[item.type]||'#6b7280';
+      return `<div class="tp-item">
+        <div class="tp-item-meta">
+          <span class="tp-channel">${item.channel}</span>
+          <span class="tp-time">${item.time}</span>
+          <span class="tp-badge" style="background:${bg};color:${col}">${lbl}</span>
+        </div>
+        <div class="tp-item-text">${item.text}</div>
+      </div>`;
+    }).join('');
+
+    html += `<div class="tp-card" style="border-top:3px solid ${person.color}">
+      <div class="tp-card-hdr">
+        <div class="tp-avatar" style="background:${person.bg};color:${person.color};border:1.5px solid ${person.border}">${person.emoji}</div>
+        <div class="tp-person-info">
+          <div class="tp-name" style="color:${person.color}">${person.name}</div>
+          <div class="tp-role">${person.role}</div>
+        </div>
+        <div class="tp-lastseen">Updated ${person.lastSeen}</div>
+      </div>
+      <div class="tp-items">${itemsHtml}</div>
+    </div>`;
+  });
+
+  html += `</div>
+  <div style="padding:16px 0 4px;font-size:11px;color:#9ca3af;text-align:right">Last refreshed: ${refreshDate} · Data from Slack</div>`;
+
+  body.innerHTML = html;
+}
+
+// ══════════════════════════════════════════════
 // BOARD FILTER
 // ══════════════════════════════════════════════
 function setBoardFilter(f){
@@ -3217,6 +3377,7 @@ renderProjects();
 renderOutbox();
 renderDecisions();
 renderMeetings(); // init badge count + notice even when not on tab
+renderTeamPulse(); // init even when not on tab so data is ready
 switchTab(activeTab);
 </script>
 </body>
