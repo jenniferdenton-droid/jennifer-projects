@@ -676,7 +676,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .tp-channel{font-size:10px;font-weight:700;color:#6366f1;background:#eef2ff;padding:1px 6px;border-radius:4px}
 .tp-time{font-size:10px;color:#9ca3af}
 .tp-badge{font-size:10px;font-weight:600;padding:1px 6px;border-radius:4px;margin-left:auto}
-.tp-item-text{font-size:12px;color:#374151;line-height:1.5}
+.tp-item-text{font-size:12px;color:#374151;line-height:1.5;margin-bottom:6px}
+.tp-item-actions{display:flex;align-items:center;gap:8px;margin-top:2px;flex-wrap:wrap}
+.tp-slack-link{font-size:11px;font-weight:600;color:#4f46e5;text-decoration:none;background:#eef2ff;padding:2px 8px;border-radius:4px;border:1px solid #c7d2fe;white-space:nowrap}
+.tp-slack-link:hover{background:#e0e7ff;border-color:#a5b4fc}
+.tp-add-btn{font-size:11px;font-weight:600;background:#f0fdf4;border:1px solid #86efac;border-radius:4px;cursor:pointer;padding:2px 8px;color:#15803d;line-height:1.5;transition:background .15s;white-space:nowrap}
+.tp-add-btn:hover{background:#dcfce7;border-color:#4ade80}
+.tp-added-tag{font-size:11px;font-weight:600;color:#6b7280;background:#f3f4f6;padding:2px 8px;border-radius:4px;border:1px solid #e5e7eb}
 </style>
 </head>
 <body>
@@ -1511,10 +1517,10 @@ const TEAM_PULSE = [
     border:'#ddd6fe',
     lastSeen:'Apr 14, 2026',
     items:[
-      {channel:'#revenue-ops', time:'Apr 14', text:'Gift cards for team — asking Miki to approve 3 new migration members at $25 value each. Coordinating onboarding logistics.', type:'action', link:''},
-      {channel:'#revenue-ops', time:'Apr 14', text:'Services survey combining bookkeeping + payroll demand signals — working to quantify pipeline interest across both product lines.', type:'signal', link:''},
-      {channel:'#medspa-education', time:'Apr 13', text:'Shared Layer bookkeeping video resource for team learning. Building product knowledge ahead of payroll launch.', type:'resource', link:''},
-      {channel:'#sales', time:'Apr 13', text:'Flagged Portrait feature limitations to sales team — helping reps set accurate expectations with prospects.', type:'flag', link:''},
+      {channel:'#revenue-ops', time:'Apr 14', text:'Gift cards for team — asking Miki to approve 3 new migration members at $25 value each. Coordinating onboarding logistics.', type:'action', link:'https://moxie-9tm4096.slack.com/channels/revenue-ops'},
+      {channel:'#revenue-ops', time:'Apr 14', text:'Services survey combining bookkeeping + payroll demand signals — working to quantify pipeline interest across both product lines.', type:'signal', link:'https://moxie-9tm4096.slack.com/channels/revenue-ops'},
+      {channel:'#medspa-education', time:'Apr 13', text:'Shared Layer bookkeeping video resource for team learning. Building product knowledge ahead of payroll launch.', type:'resource', link:'https://moxie-9tm4096.slack.com/channels/medspa-education'},
+      {channel:'#sales', time:'Apr 13', text:'Flagged Portrait feature limitations to sales team — helping reps set accurate expectations with prospects.', type:'flag', link:'https://moxie-9tm4096.slack.com/channels/sales'},
     ]
   },
   {
@@ -1527,10 +1533,10 @@ const TEAM_PULSE = [
     border:'#bae6fd',
     lastSeen:'Apr 14, 2026',
     items:[
-      {channel:'#operations', time:'Apr 14', text:'Owns services survey — drafted 5 core questions to size bookkeeping + payroll demand. Sync\'d with Leslie on distribution plan.', type:'action', link:''},
-      {channel:'#data', time:'Apr 14', text:'Flagged launch data discrepancy: "<31 launches" count doesn\'t reconcile. Needs MOR call validation before reporting to leadership.', type:'flag', link:''},
-      {channel:'#jennifer-miki-1on1', time:'Apr 13', text:'1:1 agenda item: Discuss leading system infrastructure topic at May offsite. Wants to put together a short presentation.', type:'signal', link:''},
-      {channel:'#operations', time:'Apr 13', text:'Asking if Stephanie Hudson should lead something in ops — exploring team capacity and leadership development opportunities.', type:'signal', link:''},
+      {channel:'#operations', time:'Apr 14', text:'Owns services survey — drafted 5 core questions to size bookkeeping + payroll demand. Sync\'d with Leslie on distribution plan.', type:'action', link:'https://moxie-9tm4096.slack.com/channels/operations'},
+      {channel:'#data', time:'Apr 14', text:'Flagged launch data discrepancy: "<31 launches" count doesn\'t reconcile. Needs MOR call validation before reporting to leadership.', type:'flag', link:'https://moxie-9tm4096.slack.com/channels/data'},
+      {channel:'#jennifer-miki-1on1', time:'Apr 13', text:'1:1 agenda item: Discuss leading system infrastructure topic at May offsite. Wants to put together a short presentation.', type:'signal', link:'https://moxie-9tm4096.slack.com/channels/jennifer-miki-1on1'},
+      {channel:'#operations', time:'Apr 13', text:'Asking if Stephanie Hudson should lead something in ops — exploring team capacity and leadership development opportunities.', type:'signal', link:'https://moxie-9tm4096.slack.com/channels/operations'},
     ]
   },
   {
@@ -1543,10 +1549,10 @@ const TEAM_PULSE = [
     border:'#bbf7d0',
     lastSeen:'Apr 14, 2026',
     items:[
-      {channel:'#customer-success', time:'Apr 14', text:'Billing issues delegated to Megan Koncek for handling. Clearing queue before week closes.', type:'action', link:''},
-      {channel:'#kol-partnerships', time:'Apr 14', text:'Confirmed Dr. Zayid as KOL — next step is onboarding into the program and setting content expectations.', type:'action', link:''},
-      {channel:'#moxie-data', time:'Apr 13', text:'Report cleanup session with JB + Sol in #moxie-data. Aligning on data definitions before next cycle.', type:'action', link:''},
-      {channel:'#finance', time:'Apr 13', text:'MCA/LTO loan tracking — $10k balance, 10% rate / 10% of revenue. Flagged for financial model update.', type:'flag', link:''},
+      {channel:'#customer-success', time:'Apr 14', text:'Billing issues delegated to Megan Koncek for handling. Clearing queue before week closes.', type:'action', link:'https://moxie-9tm4096.slack.com/channels/customer-success'},
+      {channel:'#kol-partnerships', time:'Apr 14', text:'Confirmed Dr. Zayid as KOL — next step is onboarding into the program and setting content expectations.', type:'action', link:'https://moxie-9tm4096.slack.com/channels/kol-partnerships'},
+      {channel:'#moxie-data', time:'Apr 13', text:'Report cleanup session with JB + Sol in #moxie-data. Aligning on data definitions before next cycle.', type:'action', link:'https://moxie-9tm4096.slack.com/channels/moxie-data'},
+      {channel:'#finance', time:'Apr 13', text:'MCA/LTO loan tracking — $10k balance, 10% rate / 10% of revenue. Flagged for financial model update.', type:'flag', link:'https://moxie-9tm4096.slack.com/channels/finance'},
     ]
   },
   {
@@ -1559,8 +1565,8 @@ const TEAM_PULSE = [
     border:'#fde68a',
     lastSeen:'Apr 14, 2026',
     items:[
-      {channel:'#moxie-data', time:'Apr 14', text:'Offered MSO/non-MSO data audit coordination with Jennifer this week — follow up to align on scope and timeline.', type:'action', link:''},
-      {channel:'#moxie-data', time:'Apr 13', text:'Omni data input issue clarification: this is an Operations-side problem, not a reporting issue. Helps scope the fix correctly.', type:'signal', link:''},
+      {channel:'#moxie-data', time:'Apr 14', text:'Offered MSO/non-MSO data audit coordination with Jennifer this week — follow up to align on scope and timeline.', type:'action', link:'https://moxie-9tm4096.slack.com/channels/moxie-data'},
+      {channel:'#moxie-data', time:'Apr 13', text:'Omni data input issue clarification: this is an Operations-side problem, not a reporting issue. Helps scope the fix correctly.', type:'signal', link:'https://moxie-9tm4096.slack.com/channels/moxie-data'},
     ]
   },
   {
@@ -1573,8 +1579,8 @@ const TEAM_PULSE = [
     border:'#fbcfe8',
     lastSeen:'Apr 14, 2026',
     items:[
-      {channel:'#hubspot', time:'Apr 14', text:'Fixed medspa ID 2014 in HubSpot — data integrity cleanup for accurate reporting.', type:'action', link:''},
-      {channel:'#data', time:'Apr 14', text:'Working with Miki on launch data second-location discrepancy — trying to reconcile count before it surfaces in exec reporting.', type:'flag', link:''},
+      {channel:'#hubspot', time:'Apr 14', text:'Fixed medspa ID 2014 in HubSpot — data integrity cleanup for accurate reporting.', type:'action', link:'https://moxie-9tm4096.slack.com/channels/hubspot'},
+      {channel:'#data', time:'Apr 14', text:'Working with Miki on launch data second-location discrepancy — trying to reconcile count before it surfaces in exec reporting.', type:'flag', link:'https://moxie-9tm4096.slack.com/channels/data'},
     ]
   }
 ];
@@ -3228,11 +3234,21 @@ function renderTeamPulse(){
 
   let html = `<div class="tp-grid">`;
 
-  TEAM_PULSE.forEach(person=>{
-    const itemsHtml = person.items.map(item=>{
+  TEAM_PULSE.forEach((person,pi)=>{
+    const itemsHtml = person.items.map((item,ii)=>{
       const lbl = typeLabel[item.type]||item.type;
       const bg = typeBg[item.type]||'#f3f4f6';
       const col = typeColor[item.type]||'#6b7280';
+      const safeText = item.text.replace(/'/g,"&#39;").replace(/"/g,"&quot;");
+      const safeChannel = item.channel.replace(/'/g,"&#39;");
+      const addedKey = 'tp_added_'+pi+'_'+ii;
+      const alreadyAdded = localStorage.getItem(addedKey)==='1';
+      const slackBtn = item.link
+        ? `<a class="tp-slack-link" href="${item.link}" target="_blank" title="Open in Slack">💬 View in Slack</a>`
+        : '';
+      const addBtn = alreadyAdded
+        ? `<span class="tp-added-tag">✓ Added to Board</span>`
+        : `<button class="tp-add-btn" onclick="addTpItemToBoard('${safeText}','${safeChannel}','${item.link||''}','${addedKey}',this)" title="Add to My Todos kanban">＋ Add to Todo</button>`;
       return `<div class="tp-item">
         <div class="tp-item-meta">
           <span class="tp-channel">${item.channel}</span>
@@ -3240,6 +3256,7 @@ function renderTeamPulse(){
           <span class="tp-badge" style="background:${bg};color:${col}">${lbl}</span>
         </div>
         <div class="tp-item-text">${item.text}</div>
+        <div class="tp-item-actions">${slackBtn}${addBtn}</div>
       </div>`;
     }).join('');
 
@@ -3257,9 +3274,40 @@ function renderTeamPulse(){
   });
 
   html += `</div>
-  <div style="padding:16px 0 4px;font-size:11px;color:#9ca3af;text-align:right">Last refreshed: ${refreshDate} · Data from Slack</div>`;
+  <div style="padding:16px 0 4px;font-size:11px;color:#9ca3af;text-align:right">Last refreshed: ${refreshDate} · Data from Slack · <a href="https://moxie-9tm4096.slack.com" target="_blank" style="color:#6366f1;text-decoration:none">Open Slack ↗</a></div>`;
 
   body.innerHTML = html;
+}
+
+function addTpItemToBoard(text, channel, link, storageKey, btn){
+  // Build a new ITEMS-style entry and stage it as notstarted
+  const newId = 'tp_todo_' + Date.now();
+  const newItem = {
+    id: newId,
+    text: '🔁 ' + text.slice(0,120),
+    from: channel,
+    channel: channel,
+    date: new Date().toISOString().slice(0,10),
+    permalink: link || '',
+    source: 'team_pulse',
+    project: null
+  };
+  ITEMS.push(newItem);
+  stageMap[newId] = 'notstarted';
+  sv(SK.stage, stageMap);
+  // Mark as added in localStorage so button stays toggled
+  localStorage.setItem(storageKey, '1');
+  // Swap button to confirm state
+  const parent = btn.closest('.tp-item-actions');
+  if(parent) parent.innerHTML = (parent.innerHTML||'').replace(/<button[^>]*tp-add-btn[^>]*>.*?<\/button>/,'<span class="tp-added-tag">✓ Added to Board</span>');
+  // Refresh board badge
+  renderBoard(); renderKPIs();
+  // Switch to todos tab briefly? No — just show a toast
+  const toast = document.createElement('div');
+  toast.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,.2)';
+  toast.textContent = '✓ Added to My Todos board';
+  document.body.appendChild(toast);
+  setTimeout(()=>toast.remove(), 2400);
 }
 
 // ══════════════════════════════════════════════
