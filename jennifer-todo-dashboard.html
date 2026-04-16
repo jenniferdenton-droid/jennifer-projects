@@ -256,29 +256,37 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .pcard-empty{padding:16px;text-align:center;font-size:12px;color:var(--muted);font-style:italic}
 
 /* ── DUE TODAY / TOMORROW BLOCKS ── */
-.due-blocks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 22px 0}
+.due-blocks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:10px 22px 0}
 .due-block{border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
 .due-block-hdr{padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent}
+.due-block-pastdue{border:2px solid #dc2626}
 .due-block-today{border:1.5px solid #fecaca}
 .due-block-tomorrow{border:1.5px solid #fde68a}
+.due-block-pastdue .due-block-hdr{background:#7f1d1d;border-bottom-color:#991b1b}
 .due-block-today .due-block-hdr{background:#fef2f2;border-bottom-color:#fecaca}
 .due-block-tomorrow .due-block-hdr{background:#fffbeb;border-bottom-color:#fde68a}
 .due-block-title{font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px}
+.due-block-pastdue .due-block-title{color:#fecaca}
 .due-block-today .due-block-title{color:#991b1b}
 .due-block-tomorrow .due-block-title{color:#92400e}
 .due-block-cnt{font-size:10px;font-weight:800;padding:2px 7px;border-radius:10px}
+.due-block-pastdue .due-block-cnt{background:#fca5a5;color:#7f1d1d}
 .due-block-today .due-block-cnt{background:#ef4444;color:#fff}
 .due-block-tomorrow .due-block-cnt{background:#f59e0b;color:#fff}
-.due-block-body{background:#fff;padding:8px;display:flex;flex-direction:column;gap:5px;max-height:200px;overflow-y:auto;scrollbar-width:thin}
+.due-block-body{background:#fff;padding:8px;display:flex;flex-direction:column;gap:5px;max-height:220px;overflow-y:auto;scrollbar-width:thin}
 .due-item{display:flex;align-items:flex-start;gap:7px;padding:7px 9px;border-radius:7px;border:1px solid transparent}
+.due-item-pastdue{background:#fff1f2;border-color:#fca5a5}
 .due-item-today{background:#fef9f9;border-color:#fecaca}
 .due-item-tomorrow{background:#fffdf4;border-color:#fde68a}
 .due-item-text{flex:1;font-size:12px;color:var(--text);line-height:1.4;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .due-item-proj{font-size:9.5px;font-weight:700;padding:1px 6px;border-radius:8px;white-space:nowrap;flex-shrink:0;align-self:flex-start;margin-top:1px}
+.due-item-age{font-size:9.5px;font-weight:700;color:#b91c1c;white-space:nowrap;flex-shrink:0;align-self:flex-start;margin-top:2px}
 .due-item-done{font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;border:none;background:#dcfce7;color:#166534;cursor:pointer;white-space:nowrap;flex-shrink:0;align-self:flex-start}
 .due-item-done:hover{background:#bbf7d0}
 .due-block-empty{font-size:11.5px;color:#6b7280;text-align:center;padding:16px 10px;font-style:italic}
-@media(max-width:600px){.due-blocks{grid-template-columns:1fr}}
+.due-block-empty-today{font-size:12px;color:#16a34a;text-align:center;padding:16px 10px;font-weight:600}
+@media(max-width:700px){.due-blocks{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.due-blocks{grid-template-columns:1fr}}
 
 /* ── DUE DATES ── */
 /* Kanban card due date row */
@@ -898,13 +906,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <button class="sync-modal-close" onclick="closeGithubSync()">✕</button>
     </div>
     <div style="padding:16px 20px">
-      <p style="font-size:13px;color:#374151;margin:0 0 12px">Copy and paste this into Terminal to push your latest dashboard to GitHub Pages:</p>
-      <div style="background:#1e1e2e;border-radius:8px;padding:12px 14px;font-family:monospace;font-size:12px;color:#cdd6f4;position:relative">
-        <span id="github-cmd-text">cd ~/Documents/Claude/Projects && git add jennifer-todo-dashboard.html && git commit -m "Manual sync $(date)" && git push origin main</span>
-        <button onclick="copyGithubCmd()" style="position:absolute;top:8px;right:8px;font-size:11px;background:#313244;border:1px solid #45475a;color:#cdd6f4;border-radius:4px;padding:2px 8px;cursor:pointer" id="github-copy-btn">📋 Copy</button>
+      <p style="font-size:13px;color:#374151;margin:0 0 8px">Open <strong>Terminal</strong> and paste this command:</p>
+      <div style="background:#1e1e2e;border-radius:8px;padding:12px 14px 12px;font-family:monospace;font-size:11.5px;color:#cdd6f4;position:relative;line-height:1.7;padding-right:72px">
+        <span id="github-cmd-text">cd ~/Documents/Claude/Projects && git add jennifer-todo-dashboard.html && git commit -m "Manual sync $(date '+%b %d %Y')" && git push origin main</span>
+        <button onclick="copyGithubCmd()" style="position:absolute;top:8px;right:8px;font-size:11px;background:#313244;border:1px solid #45475a;color:#cdd6f4;border-radius:4px;padding:3px 10px;cursor:pointer" id="github-copy-btn">📋 Copy</button>
       </div>
-      <p style="font-size:11px;color:#6b7280;margin:10px 0 0">After the push completes, wait ~60 seconds then hit <strong>Cmd+Shift+R</strong> on your GitHub Pages link to see the update.</p>
-      <p style="font-size:11px;color:#6b7280;margin:6px 0 0">⏰ The 5pm scheduled task will also push automatically every weekday.</p>
+      <p style="font-size:11px;color:#6b7280;margin:10px 0 4px">📁 <strong>Wrong folder?</strong> Replace <code style="background:#f3f4f6;padding:1px 4px;border-radius:3px">~/Documents/Claude/Projects</code> with wherever your dashboard file lives.</p>
+      <p style="font-size:11px;color:#6b7280;margin:4px 0 4px">🔑 <strong>Push asking for a password?</strong> Run this once to save your credentials: <code style="background:#f3f4f6;padding:1px 4px;border-radius:3px;font-size:10.5px">git config --global credential.helper osxkeychain</code></p>
+      <p style="font-size:11px;color:#6b7280;margin:4px 0 0">⏱ After pushing, wait ~60 sec then <strong>Cmd+Shift+R</strong> on your GitHub Pages tab to see the update.</p>
     </div>
   </div>
 </div>
@@ -1912,46 +1921,62 @@ function renderDueBlocks(){
   const wrap=document.getElementById('due-blocks-wrap');
   if(!wrap) return;
   const all=getAllItems();
-  const todayStr=new Date().toISOString().slice(0,10);
-  const tomorrowStr=new Date(Date.now()+86400000).toISOString().slice(0,10);
+  const now=new Date();
+  const todayStr=now.toISOString().slice(0,10);
+  const tomorrowStr=new Date(now.getTime()+86400000).toISOString().slice(0,10);
 
-  function itemsForDay(day){
-    return all.filter(i=>getDueDate(i.id)===day&&!['completed','cancelled'].includes(getStage(i.id)));
-  }
-  const todayItems=itemsForDay(todayStr);
-  const tomorrowItems=itemsForDay(tomorrowStr);
+  const active=i=>!['completed','cancelled'].includes(getStage(i.id));
+  const pastDueItems=all.filter(i=>{const d=getDueDate(i.id);return d&&d<todayStr&&active(i);});
+  const todayItems=all.filter(i=>getDueDate(i.id)===todayStr&&active(i));
+  const tomorrowItems=all.filter(i=>getDueDate(i.id)===tomorrowStr&&active(i));
 
-  // Only render the blocks when at least one item exists for either day
-  if(!todayItems.length&&!tomorrowItems.length){wrap.innerHTML='';return}
+  // Always show Due Today; only show others when they have content
+  if(!pastDueItems.length&&!todayItems.length&&!tomorrowItems.length){wrap.innerHTML='';return;}
 
   const todayLabel='🔴 Due Today — '+new Date(todayStr+'T12:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
   const tomorrowLabel='🟡 Due Tomorrow — '+new Date(tomorrowStr+'T12:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+  const pastLabel='⚠️ Past Due';
 
-  function buildItem(item,itemCls){
+  function daysAgo(dateStr){
+    const diff=Math.floor((now-new Date(dateStr+'T12:00:00'))/86400000);
+    return diff===1?'1 day ago':diff+' days ago';
+  }
+
+  function buildItem(item,itemCls,showAge){
     const projId=getItemProj(item);const proj=projId?projById(projId):null;
-    const st=getStage(item.id);const stConf=STAGES.find(s=>s.id===st);
+    const d=getDueDate(item.id);
     return `<div class="due-item ${itemCls}">
       <div class="due-item-text">${getItemText(item)}</div>
-      ${proj?`<span class="due-item-proj" style="background:${proj.color}22;color:${proj.color}">${proj.emoji} ${proj.name}</span>`:''}
-      <button class="due-item-done" onclick="quickDone('${item.id}')">✓ Done</button>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0">
+        ${proj?`<span class="due-item-proj" style="background:${proj.color}22;color:${proj.color}">${proj.emoji} ${proj.name}</span>`:''}
+        ${showAge&&d?`<span class="due-item-age">🕐 ${daysAgo(d)}</span>`:''}
+        <button class="due-item-done" onclick="quickDone('${item.id}')">✓ Done</button>
+      </div>
     </div>`;
   }
 
-  function buildBlock(label,blockCls,itemCls,items){
+  function buildBlock(label,blockCls,itemCls,items,emptyMsg,showAge){
+    const emptyHtml=blockCls==='due-block-today'
+      ?`<div class="due-block-empty-today">✅ Nothing due today</div>`
+      :`<div class="due-block-empty">${emptyMsg||'All clear ✓'}</div>`;
     return `<div class="due-block ${blockCls}">
       <div class="due-block-hdr">
         <div class="due-block-title">${label}</div>
         ${items.length?`<span class="due-block-cnt">${items.length} item${items.length>1?'s':''}</span>`:''}
       </div>
       <div class="due-block-body">
-        ${items.length?items.map(i=>buildItem(i,itemCls)).join(''):`<div class="due-block-empty">All clear ✓</div>`}
+        ${items.length?items.map(i=>buildItem(i,itemCls,showAge)).join(''):emptyHtml}
       </div>
     </div>`;
   }
 
-  wrap.innerHTML=`<div class="due-blocks">
-    ${buildBlock(todayLabel,'due-block-today','due-item-today',todayItems)}
-    ${buildBlock(tomorrowLabel,'due-block-tomorrow','due-item-tomorrow',tomorrowItems)}
+  const showPast=pastDueItems.length>0;
+  const showTomorrow=tomorrowItems.length>0||todayItems.length>0||pastDueItems.length>0;
+
+  wrap.innerHTML=`<div class="due-blocks" style="grid-template-columns:${showPast?'1fr 1fr 1fr':'1fr 1fr'}">
+    ${showPast?buildBlock(pastLabel,'due-block-pastdue','due-item-pastdue',pastDueItems,'',true):''}
+    ${buildBlock(todayLabel,'due-block-today','due-item-today',todayItems,'',false)}
+    ${buildBlock(tomorrowLabel,'due-block-tomorrow','due-item-tomorrow',tomorrowItems,'',false)}
   </div>`;
 }
 
@@ -2882,7 +2907,7 @@ function closeGithubSync(){
   document.getElementById('github-sync-overlay').style.display='none';
 }
 function copyGithubCmd(){
-  const cmd=`cd ~/Documents/Claude/Projects && git add jennifer-todo-dashboard.html && git commit -m "Manual sync" && git push origin main`;
+  const cmd=`cd ~/Documents/Claude/Projects && git add jennifer-todo-dashboard.html && git commit -m "Manual sync $(date '+%b %d %Y')" && git push origin main`;
   navigator.clipboard.writeText(cmd).then(()=>{
     document.getElementById('github-copy-btn').textContent='✓ Copied!';
     setTimeout(()=>{document.getElementById('github-copy-btn').textContent='📋 Copy'},2000);
