@@ -678,7 +678,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .tp-name{font-size:13px;font-weight:700;line-height:1.2}
 .tp-role{font-size:11px;color:#6b7280;margin-top:1px}
 .tp-lastseen{font-size:10px;color:#9ca3af;white-space:nowrap}
-.tp-items{padding:10px 14px 14px;display:flex;flex-direction:column;gap:8px}
+.tp-items{padding:10px 14px 14px;display:flex;flex-direction:column;gap:8px;max-height:420px;overflow-y:auto;scrollbar-width:thin}
 .tp-item{padding:8px 10px;background:#fafafa;border:1px solid #f3f4f6;border-radius:7px}
 .tp-item-meta{display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-wrap:wrap}
 .tp-channel{font-size:10px;font-weight:700;color:#6366f1;background:#eef2ff;padding:1px 6px;border-radius:4px}
@@ -1524,7 +1524,7 @@ const TEAM_PULSE = [
     color:'#7c3aed',
     bg:'#f5f3ff',
     border:'#ddd6fe',
-    lastSeen:'Apr 16, 2026',
+    lastSeen:'Week of Apr 14',
     items:[
       {channel:'#om-sales-collab', time:'Apr 16', text:'Indiana medspa law (SB 282) analysis — registration required by Jan 2027, not enforced until then. PC-MSO model may be exempt as "physician\'s office." NP full practice bill died Feb 2026. Onboarding comms going out next week.', type:'flag', link:'https://moxie-9tm4096.slack.com/archives/C07JHN9GGKH/p1776388971648679'},
       {channel:'#ask-legal', time:'Apr 16', text:'Confirmed Indiana NP full practice bill died in Feb 2026 — checking with Coheso legal agent to verify. Impacts how we advise providers on compliance.', type:'action', link:'https://moxie-9tm4096.slack.com/archives/C09KQ0LR0SX/p1776387639890329'},
@@ -1532,6 +1532,9 @@ const TEAM_PULSE = [
       {channel:'#launch-leads', time:'Apr 16', text:'Positive on Miki\'s MOR follow-up — "WE LOVE. Thanks for the follow-up!"', type:'signal', link:'https://moxie-9tm4096.slack.com/archives/C0A70MALQ78/p1776375280425669'},
       {channel:'#psm-operations-leads', time:'Apr 15', text:'Shared HR resource guide for providers on payroll — asking PSM leads to review. Goal: state compliance, hiring, HR navigation options for providers.', type:'action', link:'https://moxie-9tm4096.slack.com/archives/C072S9C66ES/p1776278557653889'},
       {channel:'#delivermore-bookkeeping', time:'Apr 15', text:'Thanked you for creating the Deliver More plan and bookkeeping channel — "Whoop Whoop!"', type:'signal', link:'https://moxie-9tm4096.slack.com/archives/C0ASWF884KV/p1776275551313859'},
+      {channel:'#revenue-ops', time:'Apr 14', text:'Gift cards for team — requesting Miki approval for 3 new migration members at $25 each. Coordinating onboarding logistics.', type:'action', link:'https://moxie-9tm4096.slack.com/channels/revenue-ops'},
+      {channel:'#revenue-ops', time:'Apr 14', text:'Services survey combining bookkeeping + payroll demand signals — quantifying pipeline interest across both product lines.', type:'signal', link:'https://moxie-9tm4096.slack.com/channels/revenue-ops'},
+      {channel:'#sales', time:'Apr 14', text:'Flagged Portrait feature limitations to sales team — helping reps set accurate expectations with prospects.', type:'flag', link:'https://moxie-9tm4096.slack.com/channels/sales'},
     ]
   },
   {
@@ -1542,7 +1545,7 @@ const TEAM_PULSE = [
     color:'#0369a1',
     bg:'#f0f9ff',
     border:'#bae6fd',
-    lastSeen:'Apr 16, 2026',
+    lastSeen:'Week of Apr 14',
     items:[
       {channel:'Group DM · Jennifer + Leslie + Sarah', time:'Apr 16', text:'Data infra is a blocker for everyone — "in like 4 DM threads on it." MS↔HS integration with Kamau, ~1.5 weeks to resolve. Told you: "All you — I\'m instructed to take a back seat here. 1:1 Monday to discuss."', type:'flag', link:'https://moxie-9tm4096.slack.com/archives/C0ATNM521S4/p1776375170718969'},
       {channel:'#launch-leads', time:'Apr 16', text:'Sent MOR action items email to team after yesterday\'s call — one-offs highlighted for those not in the pod. 1:1 Monday to cover anything outstanding.', type:'action', link:'https://moxie-9tm4096.slack.com/archives/C0A70MALQ78/p1776375073848379'},
@@ -1550,6 +1553,8 @@ const TEAM_PULSE = [
       {channel:'Group DM · Jennifer + Ben + Addison', time:'Apr 16', text:'Billing needs e-scripts reports to bill providers. Flagged you\'re leading e-scripts launch — will have the most up-to-date info.', type:'signal', link:'https://moxie-9tm4096.slack.com/archives/C0AT19XKZ7X/p1776357694581669'},
       {channel:'#general', time:'Apr 15', text:'🎉 PC Tax Day: 234 filings, 45 states, 555 medspas, 341 MD 1099s, ~4 escalations resolved. First year using Financial Document Center — PSMs not needed for triage.', type:'signal', link:'https://moxie-9tm4096.slack.com/archives/C03RWQPNHA9/p1776280329593359'},
       {channel:'#launch-leads', time:'Apr 15', text:'Churn update: 24 total — 60% beginner/growth, 90% personal reasons. Added "churn warning" for likely churns, excluded valid delays.', type:'flag', link:'https://moxie-9tm4096.slack.com/archives/C0A70MALQ78/p1776267132554199'},
+      {channel:'#data', time:'Apr 14', text:'Launch data discrepancy: "<31 launches" count doesn\'t reconcile — needs MOR call validation before reporting to leadership.', type:'flag', link:'https://moxie-9tm4096.slack.com/channels/data'},
+      {channel:'#operations', time:'Apr 14', text:'Services survey: 5 core questions to size bookkeeping + payroll demand. Sync\'d with Leslie on distribution plan.', type:'action', link:'https://moxie-9tm4096.slack.com/channels/operations'},
     ]
   },
   {
@@ -1560,13 +1565,16 @@ const TEAM_PULSE = [
     color:'#047857',
     bg:'#f0fdf4',
     border:'#bbf7d0',
-    lastSeen:'Apr 16, 2026',
+    lastSeen:'Week of Apr 14',
     items:[
       {channel:'Group DM · Jennifer + JB + Sol', time:'Apr 16', text:'Admin/Omni as source of truth discussion — wants to move away from Excel SOT. Omni → auto-updates HubSpot is the goal. Currently admin is binary (on/off), no start/end date storage. Asking you: update admin now or leave for now?', type:'action', link:'https://moxie-9tm4096.slack.com/archives/C0AQXSKUYH1/p1776364383474909'},
       {channel:'Group DM · Jennifer + JB + Sol', time:'Apr 16', text:'Flagged HubSpot visibility concern — "whoever is opted into what needs to be visible in HubSpot or Omni, not a third place." Wants billing to use same SOT.', type:'flag', link:'https://moxie-9tm4096.slack.com/archives/C0AQXSKUYH1/p1776364084968239'},
       {channel:'#gfe-requests', time:'Apr 16', text:'GFE request follow-up — asking Camille\'s team to retry a specific GFE link.', type:'action', link:'https://moxie-9tm4096.slack.com/archives/C07ER0XLEBU/p1776370665185179'},
       {channel:'#ask--supplies', time:'Apr 15', text:'Centrelabs pricing confirmed — discount applies to all Moxie providers. Sent follow-up email to rep, cc\'d Jaqlyn.', type:'action', link:'https://moxie-9tm4096.slack.com/archives/C0606RL8PFG/p1776270103619189'},
       {channel:'#ask-product', time:'Apr 15', text:'Hair restoration (topical) can\'t be added to async GFE flow — confirmed directly with Spakinect.', type:'signal', link:'https://moxie-9tm4096.slack.com/archives/C09CB4EEYTB/p1776272099910589'},
+      {channel:'#customer-success', time:'Apr 14', text:'Billing issues delegated to Megan Koncek for handling.', type:'action', link:'https://moxie-9tm4096.slack.com/channels/customer-success'},
+      {channel:'#kol-partnerships', time:'Apr 14', text:'Dr. Zayid confirmed as KOL — next step is onboarding into program and setting content expectations.', type:'action', link:'https://moxie-9tm4096.slack.com/channels/kol-partnerships'},
+      {channel:'#finance', time:'Apr 14', text:'MCA/LTO loan tracking — $10k balance, 10% rate / 10% of revenue. Flagged for financial model.', type:'flag', link:'https://moxie-9tm4096.slack.com/channels/finance'},
     ]
   },
   {
@@ -1577,12 +1585,14 @@ const TEAM_PULSE = [
     color:'#b45309',
     bg:'#fffbeb',
     border:'#fde68a',
-    lastSeen:'Apr 16, 2026',
+    lastSeen:'Week of Apr 14',
     items:[
       {channel:'#operations', time:'Apr 16', text:'Insurance compliance deep-dive — provider needs Scheduled Physician endorsement (not just admin add), Moxie PC as additional insured, COI on file. Must use WORLD if on different broker. Full checklist posted.', type:'flag', link:'https://moxie-9tm4096.slack.com/archives/C054MP9QYCV/p1776370153718869'},
       {channel:'#ops-team-leads', time:'Apr 16', text:'Shared Carlos\'s updated Help Center article process (Claude + Intercom) with Leslie — better than previous SOP. Note: role-specific article visibility (provider-only vs MD-only) not yet covered.', type:'resource', link:'https://moxie-9tm4096.slack.com/archives/C08STRX4GKV/p1776371814286859'},
       {channel:'#worldinsurancesupport', time:'Apr 17', text:'Requesting COIs for 8 medspas — Dr. Jonathan Hodor needs them to renew his own policy. Needs proof of coverage + MD name on policy.', type:'action', link:'https://moxie-9tm4096.slack.com/archives/C09DBKLLCMB/p1776432339978379'},
       {channel:'#billing', time:'Apr 15', text:'Flagged incorrect Glean doc — "MD payments are never taxed." Asked Sarah Smith to find and correct the source.', type:'flag', link:'https://moxie-9tm4096.slack.com/archives/C04DJP8PHJ7/p1776274713221889'},
+      {channel:'#moxie-data', time:'Apr 14', text:'MSO/non-MSO data audit — offered to coordinate with you this week. Align on scope and timeline.', type:'action', link:'https://moxie-9tm4096.slack.com/channels/moxie-data'},
+      {channel:'#moxie-data', time:'Apr 14', text:'Omni data input issue: confirmed this is an Operations-side problem, not a reporting issue.', type:'signal', link:'https://moxie-9tm4096.slack.com/channels/moxie-data'},
     ]
   },
   {
@@ -1593,11 +1603,13 @@ const TEAM_PULSE = [
     color:'#be185d',
     bg:'#fdf2f8',
     border:'#fbcfe8',
-    lastSeen:'Apr 16, 2026',
+    lastSeen:'Week of Apr 14',
     items:[
       {channel:'Group DM · Jennifer + Miki + Ben', time:'Apr 16', text:'Service utilization data: recommends adding new services (recruiting, e-scripts) to be exhaustive. HubSpot as SOT requires data/eng work — no access to connect Omni into HubSpot directly.', type:'signal', link:'https://moxie-9tm4096.slack.com/archives/C0AT19XKZ7X/p1776357357979109'},
       {channel:'#ask-revops', time:'Apr 16', text:'Completed task for Leslie (cc Hayley Husted) — RevOps request wrapped.', type:'action', link:'https://moxie-9tm4096.slack.com/archives/C08USCJ348J/p1776345637541369'},
       {channel:'Group DM · Jennifer + Miki + Ben', time:'Apr 15', text:'Looped you in on service utilization data request from Ben — coordinating deadline for slide building since you\'re already consolidating service usage by medspa.', type:'action', link:'https://moxie-9tm4096.slack.com/archives/C0AT19XKZ7X/p1776270961169149'},
+      {channel:'#hubspot', time:'Apr 14', text:'Fixed medspa ID 2014 in HubSpot — data integrity cleanup for accurate reporting.', type:'action', link:'https://moxie-9tm4096.slack.com/channels/hubspot'},
+      {channel:'#data', time:'Apr 14', text:'Working with Miki on launch data second-location discrepancy — reconciling count before it surfaces in exec reporting.', type:'flag', link:'https://moxie-9tm4096.slack.com/channels/data'},
     ]
   }
 ];
@@ -3300,14 +3312,14 @@ function renderTeamPulse(){
           <div class="tp-name" style="color:${person.color}">${person.name}</div>
           <div class="tp-role">${person.role}</div>
         </div>
-        <div class="tp-lastseen">Updated ${person.lastSeen}</div>
+        <div class="tp-lastseen">${person.lastSeen}</div>
       </div>
       <div class="tp-items">${itemsHtml}</div>
     </div>`;
   });
 
   html += `</div>
-  <div style="padding:16px 0 4px;font-size:11px;color:#9ca3af;text-align:right">Last refreshed: ${refreshDate} · Data from Slack · <a href="https://moxie-9tm4096.slack.com" target="_blank" style="color:#6366f1;text-decoration:none">Open Slack ↗</a></div>`;
+  <div style="padding:16px 0 4px;font-size:11px;color:#9ca3af;text-align:right">Last refreshed: ${refreshDate} · Rolling weekly view · <a href="https://moxie-9tm4096.slack.com" target="_blank" style="color:#6366f1;text-decoration:none">Open Slack ↗</a></div>`;
 
   body.innerHTML = html;
 }
